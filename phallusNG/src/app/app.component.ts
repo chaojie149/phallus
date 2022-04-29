@@ -8,6 +8,9 @@ import { PrimeNGConfig } from 'primeng/api';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
+
+  menuMode = 'static';
+
   constructor(
     private primengConfig: PrimeNGConfig,
     private translateService: TranslateService

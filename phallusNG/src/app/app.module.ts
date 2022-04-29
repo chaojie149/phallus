@@ -1,8 +1,21 @@
+import { AppMenuComponent } from './app.menu.component';
+import { AppFooterComponent } from './app.footer.component';
+import { AppMainComponent } from './app.main.component';
+import { AppConfigComponent } from './app.config.component';
+import { AppConfig } from './api/appconfig';
+import { AppTopBarComponent } from './app.topbar.component';
+/*
+ * @Author: C.J
+ * @Date: 2022-04-30 00:01:15
+ * @Last Modified by: C.J
+ * @Last Modified time: 2022-04-30 00:34:16
+ */
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,19 +24,39 @@ import { MainLayoutComponent } from './view/layout/main-layout/main-layout.compo
 import { SharedModule } from './shared/shared/shared.module';
 import { HelloWorldComponent } from './view/pages/hello-world/hello-world.component';
 
+
+import { CountryService } from './service/countryservice';
+import { CustomerService } from './service/customerservice';
+import { EventService } from './service/eventservice';
+import { IconService } from './service/iconservice';
+import { NodeService } from './service/nodeservice';
+import { PhotoService } from './service/photoservice';
+import { ProductService } from './service/productservice';
+import { MenuService } from './service/app.menu.service';
+import { ConfigService } from './service/app.config.service';
+import { FormsModule } from '@angular/forms';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, HelloWorldComponent],
+  declarations: [
+    AppComponent,
+    AppTopBarComponent,
+    AppConfigComponent,
+    AppMainComponent,
+    AppFooterComponent,
+    AppMenuComponent,
+    MainLayoutComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     RouterModule,
     HttpClientModule,
-    // 在这里配置
+    FormsModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -32,7 +65,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  providers: [],
+  providers: [
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    CountryService, CustomerService, EventService, IconService, NodeService,
+    PhotoService, ProductService, MenuService, ConfigService
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
