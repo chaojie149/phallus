@@ -53,6 +53,8 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
 
   subscription!: Subscription;
 
+
+
   constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
 
   ngOnInit() {

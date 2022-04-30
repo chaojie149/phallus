@@ -1,3 +1,4 @@
+import { AppTabViewComponent } from './app.tabview.component';
 import { AppMenuComponent } from './app.menu.component';
 import { AppFooterComponent } from './app.footer.component';
 import { AppMainComponent } from './app.main.component';
@@ -8,7 +9,7 @@ import { AppTopBarComponent } from './app.topbar.component';
  * @Author: C.J
  * @Date: 2022-04-30 00:01:15
  * @Last Modified by: C.J
- * @Last Modified time: 2022-04-30 00:34:16
+ * @Last Modified time: 2022-04-30 16:17:47
  */
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { NgModule } from '@angular/core';
@@ -48,7 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppMainComponent,
     AppFooterComponent,
     AppMenuComponent,
-    MainLayoutComponent
+    AppTabViewComponent,
+    MainLayoutComponent,
   ],
   imports: [
     BrowserModule,
