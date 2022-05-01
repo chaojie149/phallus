@@ -1,3 +1,4 @@
+import { MenuService } from './service/app.menu.service';
 import { Component, OnInit } from '@angular/core';
 import { AppMainComponent } from './app.main.component';
 
@@ -5,15 +6,13 @@ import { AppMainComponent } from './app.main.component';
   selector: 'app-menu',
   template: `
         <div class="layout-menu-container">
-            <ul class="layout-menu" role="menu" (keydown)="onKeydown($event)">
-                <li app-menu class="layout-menuitem" *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true" role="none">
-                <div class="layout-menuitem-content p-link" pRipple>
+            <ul class="layout-menu" role="menu">
+                <li (click)="itemClick($event,item,i)" app-menu class="layout-menuitem" *ngFor="let item of model; let i = index;" [item]="item" [index]="i" [root]="true" role="none">
+                <div class="{{i == activeIndex ? 'layout-menuitem-content p-link active':'layout-menuitem-content p-link'}}" pRipple>
                 <div class="layout-menuitem-root-text" [attr.aria-label]="item.label">
                   {{item.label}}
                     </div>
                 </div>
-
-
                 </li>
             </ul>
         </div>
@@ -23,11 +22,13 @@ export class AppMenuComponent implements OnInit {
 
   model: any[];
 
-  constructor(public appMain: AppMainComponent) { }
+  activeIndex: number;
+
+  constructor(public appMain: AppMainComponent, public menuService: MenuService) { }
 
   ngOnInit() {
     this.model = [
-      { label: '表单', icon: 'pi pi-fw pi-id-card', routerLink: ['/uikit/formlayout'] },
+      { label: '表单', icon: 'pi pi-fw pi-id-card', routerLink: ['/base/hello'] },
       { label: 'Input', icon: 'pi pi-fw pi-check-square', routerLink: ['/uikit/input'] },
       { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', routerLink: ['/uikit/floatlabel'] },
       { label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', routerLink: ['/uikit/invalidstate'] },
@@ -46,11 +47,10 @@ export class AppMenuComponent implements OnInit {
     ]
   }
 
-  onKeydown(event: KeyboardEvent) {
-    const nodeElement = (<HTMLDivElement>event.target);
-    if (event.code === 'Enter' || event.code === 'Space') {
-      nodeElement.click();
-      event.preventDefault();
-    }
+  itemClick(event, item, i): void {
+    event.stopPropagation();
+    this.activeIndex = i
+    this.menuService.onMenuStateChange(item)
   }
+
 }

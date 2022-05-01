@@ -1,3 +1,4 @@
+import { MainLayoutComponent } from './view/layout/main-layout/main-layout.component';
 import { HelloWorldComponent } from './view/pages/hello-world/hello-world.component';
 /*
  * @Author: C.J
@@ -12,14 +13,20 @@ import { AppMainComponent } from './app.main.component';
 const routes: Routes = [
   {
     path: '', component: AppMainComponent,
+  },
+  {
+    path: 'base',
+    component: MainLayoutComponent,
     children: [
-      { path: '', component: HelloWorldComponent }
+      {
+        path: 'hello', component: HelloWorldComponent,
+      },
     ]
   },
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,  {scrollPositionRestoration: 'enabled', anchorScrolling:'enabled'}
+  imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled', anchorScrolling: 'enabled' }
   )],
   exports: [RouterModule]
 })

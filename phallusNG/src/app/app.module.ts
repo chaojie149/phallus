@@ -36,6 +36,7 @@ import { ProductService } from './service/productservice';
 import { MenuService } from './service/app.menu.service';
 import { ConfigService } from './service/app.config.service';
 import { FormsModule } from '@angular/forms';
+import { MainPageComponent } from './view/pages/main-page/main-page.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,6 +52,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppMenuComponent,
     AppTabViewComponent,
     MainLayoutComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,

@@ -20,7 +20,15 @@
   height: 4rem;
 }
 
+.p-tabview-nav{
+  li{
+    border-right: 1px solid #eee;
+  }
+}
 
+.p-tabview .p-tabview-left-icon{
+  font-size: 15px;
+}
 
 .p-tabview .p-tabview-nav li .p-tabview-nav-link {
   border-width: 2px 0px 0px 0px;
@@ -31,4 +39,9 @@
 
 .p-highlight {
   background-color: grey;
+}
+
+
+.p-tabview .p-tabview-panels{
+  padding: 0;
 }
