@@ -38,14 +38,16 @@ export class AppTabViewComponent implements AfterViewInit, OnInit {
 
 
   handleClose(e) {
-    this.tabs.splice(e.index,1)
-    setTimeout(() => {
-      if(e.index == 0){
-        this.activeIndex = 0
+    console.log(e.index)
+    this.tabs.splice(e.index-1,1)
+    if (this.tabs.length == 0){
+      this.activeIndex = 0
+    }else{
+      if(this.activeIndex === e.index){
+        this.activeIndex = e.index - 1
       }
-      this.activeIndex = e.index-1
-      e.close();
-    },10)
+    }
+    e.close();
   }
 
 
