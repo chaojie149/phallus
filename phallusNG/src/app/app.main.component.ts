@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { ConfigService } from './service/app.config.service';
 import { AppConfig } from './api/appconfig';
 import { Subscription } from 'rxjs';
+import {MenuItem} from "primeng/api";
 
 @Component({
   selector: 'app-main',
@@ -53,11 +54,21 @@ export class AppMainComponent implements AfterViewInit, OnDestroy, OnInit {
 
   subscription!: Subscription;
 
+  items: MenuItem[];
+
+  home: MenuItem;
 
 
   constructor(public renderer: Renderer2, public app: AppComponent, public configService: ConfigService) { }
 
   ngOnInit() {
+    this.items = [
+      {label: '基础数据'},
+      {label: '表单'},
+    ];
+
+    this.home = {icon: 'pi pi-home', routerLink: '/'};
+
     this.config = this.configService.config;
     this.subscription = this.configService.configUpdate$.subscribe(config => this.config = config);
   }

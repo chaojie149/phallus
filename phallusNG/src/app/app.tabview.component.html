@@ -2,10 +2,10 @@
 <p-tabView [scrollable]="true" [(activeIndex)]="activeIndex" [controlClose]="true" (onClose)="handleClose($event)">
   <p-tabPanel  #tab leftIcon="pi pi-home" header="首页">
     <!-- <iframe src="https://baidu.com"></iframe> -->
-    <div style="height: calc(100vh - 13.1rem);"></div>
+    <div style="height: calc(100vh - 14.9rem);"></div>
   </p-tabPanel>
-  <p-tabPanel  *ngFor="let tab of tabs;"  [closable]="true" [header]="tab.label">
-    <iframe style="width: 100%; height: calc(100vh - 13.1rem);" [src]="tab.routerLink"></iframe>
+  <p-tabPanel leftIcon="{{tab.icon}}"  *ngFor="let tab of tabs;"  [closable]="true" [header]="tab.label">
+    <iframe style="width: 100%;" [src]="tab.routerLink"></iframe>
 </p-tabPanel>
 <!-- <p-tabPanel  [closable]="true" tabindex=1   (contextmenu)="onContextMenu($event, 1)" #tab leftIcon="pi pi-home" header="嘻嘻嘻">
 </p-tabPanel> -->

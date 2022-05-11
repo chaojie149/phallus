@@ -24,8 +24,7 @@ export class AppTabViewComponent implements AfterViewInit, OnInit {
 
 
   constructor(public appMain: AppMainComponent, public menuService: MenuService,
-    public changeDetectorRef: ChangeDetectorRef, public zone: NgZone,
-    private sanitizer: DomSanitizer) {
+    public changeDetectorRef: ChangeDetectorRef, public zone: NgZone) {
 
     this.menuSourceSubscription = this.menuService.menuSource$.subscribe(key => {
       this.openNewTab(key)
@@ -57,7 +56,6 @@ export class AppTabViewComponent implements AfterViewInit, OnInit {
         this.activeIndex = this.tabs.indexOf(item) + 1;
       })
     } else {
-      item.routerLink = this.sanitizer.bypassSecurityTrustResourceUrl(window.location.protocol + '//' + window.location.host + '/#' + item.routerLink[0])
       console.log(item)
       this.tabs.push(item);
       setTimeout(() => {

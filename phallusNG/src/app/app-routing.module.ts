@@ -9,6 +9,7 @@ import { HelloWorldComponent } from './view/pages/hello-world/hello-world.compon
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppMainComponent } from './app.main.component';
+import {SettingComponent} from "./view/pages/sys/setting/setting.component";
 
 const routes: Routes = [
   {
@@ -23,6 +24,15 @@ const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'system',
+    component: MainLayoutComponent,
+    children: [
+      {
+        path: 'setting', component: SettingComponent,
+      },
+    ]
+  }
 ]
 
 @NgModule({

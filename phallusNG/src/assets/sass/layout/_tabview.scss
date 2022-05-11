@@ -45,3 +45,12 @@
 .p-tabview .p-tabview-panels{
   padding: 0;
 }
+
+.p-tabview-close {
+  &:hover{
+    background-color: grey;
+    border-radius: 50%;
+    color: white;
+  }
+  padding: 3px;
+}
