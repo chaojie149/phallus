@@ -72,10 +72,8 @@
      color: white;
     font-weight: bold;
     &:hover {
-      // color: var(--text-color);
-          color: white;
-
-    background-color: var(--primary-color);
+      color: var(--text-color);
+      background-color: var(--blue-100);
   }
     margin-left: 1rem;
     font-size: 2em;

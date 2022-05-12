@@ -7,10 +7,13 @@ export class MenuService {
 
   constructor(private sanitizer: DomSanitizer) {
   }
+
   private menuSource = new Subject<any>();
+
   private resetSource = new Subject();
 
   menuSource$ = this.menuSource.asObservable();
+
   resetSource$ = this.resetSource.asObservable();
 
   onMenuStateChange(key: any) {

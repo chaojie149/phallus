@@ -1,9 +1,9 @@
-import { MenuService } from './service/app.menu.service';
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, NgZone, Input } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import { Subscription } from 'rxjs';
-import { AppMainComponent } from './app.main.component';
-import { DomSanitizer } from '@angular/platform-browser';
+import {MenuService} from './service/app.menu.service';
+import {AfterViewInit, ChangeDetectorRef, Component, OnInit, NgZone, Input} from '@angular/core';
+import {MenuItem} from 'primeng/api';
+import {Subscription} from 'rxjs';
+import {AppMainComponent} from './app.main.component';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-tabview',
@@ -24,8 +24,7 @@ export class AppTabViewComponent implements AfterViewInit, OnInit {
 
 
   constructor(public appMain: AppMainComponent, public menuService: MenuService,
-    public changeDetectorRef: ChangeDetectorRef, public zone: NgZone) {
-
+              public changeDetectorRef: ChangeDetectorRef, public zone: NgZone) {
     this.menuSourceSubscription = this.menuService.menuSource$.subscribe(key => {
       this.openNewTab(key)
     });
@@ -35,14 +34,12 @@ export class AppTabViewComponent implements AfterViewInit, OnInit {
     this.closable = true
   }
 
-
   handleClose(e) {
-    console.log(e.index)
-    this.tabs.splice(e.index-1,1)
-    if (this.tabs.length == 0){
+    this.tabs.splice(e.index - 1, 1)
+    if (this.tabs.length == 0) {
       this.activeIndex = 0
-    }else{
-      if(this.activeIndex === e.index){
+    } else {
+      if (this.activeIndex === e.index) {
         this.activeIndex = e.index - 1
       }
     }
